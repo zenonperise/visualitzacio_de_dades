@@ -1,0 +1,1 @@
+# visualitzacio_de_dades
