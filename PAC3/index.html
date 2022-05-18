@@ -1,0 +1,357 @@
+<html>
+
+<head>
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
+    <script src="data.js"></script>
+    <script src="scroll.js"></script>
+    <script src="evolucio.js"></script>
+    <style>
+        .header {
+            width: 100%;
+            height: 400px;
+            background-color: #313715;
+            color: white;
+            text-align: left;
+            display: flex;
+
+        }
+
+        .header_box {
+            padding-top: 40px;
+        }
+
+        .header_text {
+            padding-left: 40px;
+            text-align: right;
+        }
+
+        .header_credit {
+            padding-top: 40px;
+            font-size: 10px;
+            text-orientation: sideways;
+            writing-mode: sideways-rl;
+        }
+
+        .header_img {
+            padding-top: 40px;
+            padding-left: 200px;
+        }
+
+        .section {
+            padding-left: 400px;
+            padding-right: 400px;
+        }
+
+        .intro {
+            padding-top: 250px;
+        }
+
+        .card {
+            width: 220px;
+            height: 120px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .numbers {
+            padding-top: 50px;
+        }
+
+        .infobox {
+            width: 700px;
+            height: 500px;
+            position: sticky;
+            top: calc(50% - 250px);
+        }
+
+        .scroll {
+            height: 10px;
+            width: 100%;
+        }
+
+        .tooltip {
+            opacity: 0;
+            width: 700px;
+            height: 200px;
+            position: sticky;
+            top: calc(50% + 250px);
+            padding: 20px;
+        }
+
+
+        .bubbles {
+            stroke-width: 2px;
+            stroke: white;
+        }
+
+        .bubbles:hover {
+            stroke: black;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+<body class="mdc-typography">
+    <section class="header">
+        <div class="header_box mdc-typography--headline2">
+            <h1 class="header_text header_text_1 ">Cap a una Europa sense</h1>
+            <h1 class="header_text header_text_2 ">Energies F&ograve;ssils?</h1>
+        </div>
+        <div style="width: 20px;"></div>
+        <img class="header_img" src="1024px-Wind_power_plants_in_Xinjiang,_China.jpg">
+        <div class="header_credit">
+            <p>
+                By Chris Lim - Wind power plants in Xinjiang, China (Taken with a Nikon D70.)
+            </p>
+            <p>
+                <a
+                    href="https://commons.wikimedia.org/wiki/File:Wind_power_plants_in_Xinjiang,_China.jpg">https://commons.wikimedia.org/wiki/File:Wind_power_plants_in_Xinjiang,_China.jpg</a>
+            </p>
+        </div>
+    </section>
+    <section class="intro section">
+        <p class="paragraf mdc-typography--body1">
+            Des del final de la Segona Guerra Mundial, Europa ha viscut un periode relativament
+            llarg de pau i prosperitat. Fins a aquesta gran guerra, els conflictes
+            entre potencies europees eren constants, donant lloc a guerres, tant en territori
+            europeu com a la resta del m&oacute;n, per al control dels recursos i del
+            comer&ccedil; mundial.
+        </p>
+        <p class="paragraf mdc-typography--body1">
+            Un cop acabada la Segona Guerra Mundial, i en vista de la quantitat de conflictes
+            anteriors, es va posar en marxa la diplomacia per tal d'arribar a acords que evitessin
+            conflictes futurs. D'aquesta llavor va sorgir el que avui anomenem Uni&oacute; Europea.
+            Aquesta Uni&oacute; s'ha traduit en el periode m&eacute;s llarg de pau i
+            prosperitat que ha vist el continent en tota la seva hist&ograve;ria.
+        </p>
+        <p class="paragraf mdc-typography--body1">
+            Tot i que no tots els paissos europeus pertanyen a la Uni&oacute; Europea, tots ells
+            estan relacionats i disfruten d'unes garanties socials i econ&ograve;miques similars.
+            A continuaci&oacute; veiem un resum d'alguns valors clau.
+        </p>
+
+        <div style="display: flex;">
+            <div class="mdc-card card">
+                <div class="paragraf mdc-typography--headline4">32</div>
+                <div class="paragraf mdc-typography--headline5">PAISSOS</div>
+            </div>
+            <div class="mdc-card card">
+                <div class="paragraf mdc-typography--headline4">538 M</div>
+                <div class="paragraf mdc-typography--headline5">HABITANTS</div>
+            </div>
+            <div class="mdc-card card">
+                <div class="paragraf mdc-typography--headline4">US$ 15.9 B</div>
+                <div class="paragraf mdc-typography--headline5">PIB</div>
+            </div>
+            <div class="mdc-card card">
+                <div class="paragraf mdc-typography--headline4">US$ 38 K</div>
+                <div class="paragraf mdc-typography--headline5">PIB per CAPITA</div>
+            </div>
+        </div>
+
+        <p class="paragraf mdc-typography--body1">
+            Un dels pilars fonamental per tenir una societat avan&ccedil;ada econ&ograve;micament,
+            tal com ho entenem avui dia, &eacute;s la disponibilitat de recursos
+            energ&egrave;tics i Europa no &eacute;s una excepci&oacute;. A mitjans del segle XX,
+            les conques mineres de carb&oacute; eren imprescindibles. M&eacute;s endavant el
+            petroli va ocupar el seu lloc. Actualment sembla ser que ens aboquem a un nou canvi
+            de paradigma: les energies renovables. En els ultims anys el percentatge d'electricitat
+            generat per aquestes energies no ha parat de cr&egrave;ixer. S'ha arribat al punt de
+            poder despla&ccedil;ar el petroli
+            com ho aquest ho fer amb el carb&oacute;? Es pot mantenir el creixement econ&ograve;mic
+            amb el nou model?
+        </p>
+    </section>
+    <section class="numbers section">
+        <h1 class="mdc-typography--headline3">Evoluci&oacute; de l'&uacute;s d'Energies Renovables</h1>
+        <p class="paragraf mdc-typography--body1">
+            A la seg&uuml;ent gr&agrave;fica es mostra com a evolucionat l'&uacute;s d'
+            energies renovables desde 1945. Cada bombolla representa un pais. El radi d'aquesta
+            bombolla representa el PIB. El color i la posici&oacute; horitzontal representen
+            ens donen informació sobre quina proporció de l'energia consumida s'ha obtingut
+            a partir de combustibles f&ograve;ssils. Per veure més detalls sobre una bombolla
+            concreta &eacute;s pot passar el punter per sobre. Una caixa s'obre sota la
+            gr&agrave;fica amb m&eacute;s informaci&oacute;.
+        </p>
+        <div style="display: flex;">
+            <div style="width: 30%;" id="number-block">
+                <p class="paragraf mdc-typography--body1" style="height:100px"></p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">1945 - Fi de la guerra</h1>
+                <p class="paragraf mdc-typography--body1">
+                    Al 1945 Europa est&agrave; destruida per la guerra.
+                    La població i l'economia de cada pais han patit les conseq&uuml;&egrave;ncies de 6 anys
+                    de conflicte. Les ecomomies m&eacute;s potents s&oacute;n les del Regne Unit i
+                    Alemanya. En aquella &egrave;poca encara no hi havia consci&egrave;ncia
+                    ecol&ograve;gica ni de la possibilitat de que els recursos s'acabessin.
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">1950 - Reconstrucci&oacute;</h1>
+                <p class="paragraf mdc-typography--body1">
+                    5 anys despr&eacute; d'acabar la guerra havien canviat moltes coses a Europa.
+                    Les pot&egrave;ncies aliades ja s'havien retirat d'Alemanya, que s'havia dividit en 2 estats:
+                    Republica Federal Alemanya i Republica Democr&agrave;tica Alemanya.
+                    Les tasques de reconstrucci&oacute; estavan en marxa. Es pot veure com 4 paissos comencen a
+                    destacar sobre la resta: Alemanya, Fran&ccedil;a, Regne Unit i Italia. Pel que fa a l'&uacute;s
+                    de combustibles no f&ograve;ssils, encara no &eacute;s veu cap evoluci&oacute;
+
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">1960 - Baby Boom</h1>
+                <p class="paragraf mdc-typography--body1">
+                    La d&agrave;cada dels 60 va donar pas al que despr&eacute;s s'ha anomenat la generaci&oacute;
+                    del Baby Boom. La guerra quedava en el passat. L'economia estava creixent de forma continua
+                    i, d'aqui el nom, la poblaci&oacute; estava creixent. En aquesta &egrave;poca es van produir
+                    molts avan&ccedil;os en diferents camps. El m&eacute;s innovador va ser, sense dubtes, la carrera
+                    espacial, que va acabar amb l'arribada de l'home a la lluna. A m&eacute;s del consum
+                    d'energia per part de la ind&uacute;stria es va sumar la generalitzaci&oacute; de
+                    l'automobil.
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">1970 - Crisis del Petroli</h1>
+                <p class="paragraf mdc-typography--body1">
+                    A la d&egrave;cada dels 70 est&agrave; marcada per la Crisis del Petroli al 1973.
+                    Abans d'aix&ograve; ja es poden veure a Europa paissos que no basen totes les seves
+                    necessitats energ&egrave;tiques en combustibles f&ograve;ssils. S'aprofiten salts
+                    d'aigua per a produir energia hidro-el&egrave;ctrica i l'energia nuclear
+                    comen&ccedil;a ser d'&uacute;s com&uacute; a Europa. En aquesta d&egrave;cada tamb&eacute;
+                    comencen a apareixer els primers moviments ecologistes que, tot i que no tenen encara
+                    representaci&oacute; institucional, s&oacute;n cada cop m&eacute;s importants.
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">1980 - Fi de la Guerra Freda</h1>
+                <p class="paragraf mdc-typography--body1">
+                    Els 80 estan marcats sobretot per la caiguda del mur de Berlin i la descomposici&oacute;
+                    de l'Uni&oacute; Sovi&egrave;tica. Tot i que els moviments ecologistes tenen cada cop
+                    m&eacute;s representaci&oacute;, sembla haver poques difer&egrave;ncies respecte a la
+                    d&egrave;cada anterior. Malgrat tot, pot&egrave;ncies com Alemanya, Fran&ccedil;a i
+                    Italia es van despla&ccedil;ant cap a la dreta de la gr&agrave;fica, aix&ograve; &eacute;s,
+                    cada cop s'utilitzen m&eacute;s les fonts d'energia renovables.
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">1990 - Caiguda de l'URSS</h1>
+                <p class="paragraf mdc-typography--body1">
+                    Els 90 comencen amb la caiguda del mur de Berlin pocs mesos abans. Aquesta d&egrave;cada
+                    est&agrave; marcada pel colapse de l'URSS i l'aparaci&oacute; de moltes rep&uacute;bliques.
+                    A m&eacute;s &eacute;s donen processos com la reunificaci&oacute; alemanya i la
+                    desintegraci&oacute; de Txecoslovaquia i Yugoslavia. A partir d'aquest temps es deixa de
+                    banda la biporalitat que ha impregnat tota la pol&iacute;tica internacional per donar pas
+                    a un m&oacute;n monopolar, comandat pels EUA. A Europa &eacute;s donen passos per a la
+                    integraci&oacute; europea amb tractats com el de Maastricht. Pel que fa a l'&uacute;s d'energies
+                    renovables,
+                    els paissos escandinaus s&oacute;n liders, tot i que les grans pot&egrave;ncies van avan&ccedil;ant
+                    poc a poc
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">2000 - Multipolaritat</h1>
+                <p class="paragraf mdc-typography--body1">
+                    La d&egrave;cada dels 2000 va ser la del despertar de la Xina com a actor mundial.
+                    En aquest peri&ograve;de va passar a ser la segona pot&eacute;ncia mundial. L'aparici&oacute;
+                    d'aquesta i altres economies fortes com India o Brasil van donar lloc a un m&oacute;n multipolar.
+                    Europa va ampliar-se cap a l'est, absorvint paissos que es trobaven sota l'&agrave;rea
+                    d'influ&egrave;ncia
+                    de l'URSS. Cal destacar en aquest periode com Fran&ccedil;a consegueix tenir una economia forta
+                    i alhora consumir gaireb&eacute; la meitat de la seva energia de fonts renovables. Alemanya,
+                    tot i un fort creixement, nom&eacute;s utilitza un 15% d'energia renovable.
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">2010 - Crisis a Europa</h1>
+                <p class="paragraf mdc-typography--body1">
+                    Aquesta d&egrave;cada est&agrave; marcada per la crisis que va afectar a diferents paissos
+                    europeus. Alguns d'ells van haver de patir un rescat bancari. En aquesta d&egrave;cada tamb&eacute;
+                    es va produir l'accident de Fukushima que, juntament amb els Acords de Paris de 2015, posa
+                    sobre la taula la necessitat de prendre messures per tal de tenir cura del medi ambient
+                    i d'evitar el calentament global. A Europa es veu com la majoria d'economies tendeixen a utlititzar
+                    cada cop m&eacute;s energies de fonts renovables.
+                </p>
+                <div class="scroll" name="numbers"></div>
+                <h1 class="mdc-typography--headline5">Actualitat</h1>
+                <p class="paragraf mdc-typography--body1">
+                    A l'actualitat es veu com la crisis de la d&egrave;cada passada ja forma part del passat.
+                    Els paissos m&eacute;s pr&ograve;spers han crescut respecte a la d&egrave;cada passada.
+                    La majoria de paissos estan aconseguint fer una transici&oacute; cap a formes d'energia
+                    renovables, per&ograve; encara queda molt cam&iacute; a recorrer. La principal economia d'Europa,
+                    Alemanya, nom&eacute;s arriba fins a un 20% de fonts d'energia renovables. Altres economies
+                    avan&ccedil;ades com l'holandesa estan molt m&eacute;s endarrerides en aquest aspecte.
+                </p>
+                <p class="paragraf mdc-typography--body1">
+                    De cara al futur sembla ser que caldria veure la via escandinava. Noruega i Su&egrave;cia
+                    han aconseguit utilitzar &uacute;nicament un 30% d'energia provinent de fonts no renovables.
+                    Es podria argumentar que s&oacute;n dos economies petites, per&ograve; junts tenen un pes
+                    econ&ograve;mic similar a l'economia holandesa, que utilitza un 95% d'energia de fonts
+                    no renovables.
+                </p>
+                <p class="paragraf mdc-typography--body1">
+                    Responent les preguntes originals, a dia d'avui &eacute;s ilusori pensar que es pot
+                    substituir tot l'&uacute;s de fonts d'energia no renovables. Aquesta tasca &eacute;s
+                    nom&eacute;s possible amb un canvi estructural molt important. Per&oacute; s'ha mostrat
+                    que aquest canvi &eacute;s possible. Els paissos escandinaus mostren el cam&iacute;.
+                </p>
+                <p class="paragraf mdc-typography--body1" style="height: 150px;"></p>
+                <div class="scroll" name="numbers"></div>
+            </div>
+            <div style="width: 70%; display: block;">
+                <div class="infobox">
+                </div>
+                <div class="mdc-card tooltip">
+                    <span class="mdc-typography--headline5">Pais: <span class="tooltip_country"></span></span>
+                    <span class="mdc-typography--headline5">PIB: <span class="tooltip_gdp"></span></span>
+                    <span class="mdc-typography--headline5">Poblaci&oacute;: <span
+                            class="tooltip_population"></span></span>
+                    <span class="mdc-typography--headline5">Percentatge en Energies F&ograve;ssils:
+                        <span class="tooltip_fossil"></span>
+                        <span class="tooltip_fossil_color" style="padding-left: 50px;">&nbsp;</span>
+                    </span>
+                    <div style="height: 150px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="header section numbers" style="display: block;">
+        <h1 class="mdc-typography--headline3">Refer&egrave;ncies</h1>
+        <p class="paragraf mdc-typography--body1">
+            Alumne: Zen&oacute;n Peris&eacute; Al&iacute;a
+        </p>
+        <p class="paragraf mdc-typography--body1">
+            Assignatura: Visualitzaci&oacute; de dades - Master de Ci&egrave;ncia de Dades - UOC - <a
+                href="https://www.uoc.edu/portal/ca/index.html">http://www.uoc.edu</a>
+        </p>
+        <p class="paragraf mdc-typography--body1">
+            Semestre: Primavera 21 / 22
+        </p>
+        <p class="paragraf mdc-typography--body1" style="height: 50px;">
+
+        </p>
+        <p class="paragraf mdc-typography--body1">
+            Dataset: <a href="https://www.kaggle.com/datasets/pralabhpoudel/world-energy-consumption">World Energy
+                Consumption</a>
+        </p>
+        <p class="paragraf mdc-typography--body1">
+            Tecnologia: D3.js, Material Design, RxJS
+        </p>
+
+
+    </section>
+
+</body>
+
+</html>
