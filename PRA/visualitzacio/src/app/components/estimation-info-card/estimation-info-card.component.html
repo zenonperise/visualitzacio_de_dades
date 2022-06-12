@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>Details</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <div>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Selected Sprints: </td>
+          <td>
+              {{selectedSprints | async}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Selected Project: </td>
+          <td>
+              {{selectedProject | async}}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

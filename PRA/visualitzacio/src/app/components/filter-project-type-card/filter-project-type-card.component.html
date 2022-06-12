@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>Filter By Project Type</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <mat-list>
+        <mat-list-item><mat-checkbox [checked]="getValue('CLIENT')|async" (change)="toggle('CLIENT')">Client </mat-checkbox><div [style.background-color]="getColor('CLIENT')|async" style="margin-left: 10px; width: 20px; height: 20px;"></div></mat-list-item>
+        <mat-list-item><mat-checkbox [checked]="getValue('INTERN')|async" (change)="toggle('INTERN')">Intern </mat-checkbox><div [style.background-color]="getColor('INTERN')|async" style="margin-left: 10px; width: 20px; height: 20px;"></div></mat-list-item>
+        <mat-list-item><mat-checkbox [checked]="getValue('SUPPORT')|async" (change)="toggle('SUPPORT')">Support</mat-checkbox><div [style.background-color]="getColor('SUPPORT')|async" style="margin-left: 10px; width: 20px; height: 20px;"></div></mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

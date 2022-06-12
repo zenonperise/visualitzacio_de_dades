@@ -1,0 +1,11 @@
+<mat-tab-group preserveContent>
+    <mat-tab label="All Project Types">
+        <app-project-type-graphic [tabChange]="notifyChange"></app-project-type-graphic>
+    </mat-tab>
+    <mat-tab label="Internal Projects">
+        <app-internal-components-graphic [tabChange]="notifyChange"></app-internal-components-graphic>
+    </mat-tab>
+    <mat-tab label="Estimations">
+        <app-estimation-main [tabChange]="notifyChange"></app-estimation-main>
+    </mat-tab>
+  </mat-tab-group>

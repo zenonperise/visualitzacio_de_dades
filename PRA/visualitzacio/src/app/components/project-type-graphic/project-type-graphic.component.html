@@ -1,0 +1,23 @@
+<div style="display: flex;">
+<div style="width: 50%;">
+<div #graphic style="width: 100%; height: 500px;">
+    <svg class="project-type-graphic" style="transform: rotateX(180deg);"
+    [style.height.px]="plotHeight" 
+    [style.width.px]="plotWidth"
+    [style.padding-bottom.px]="margin.top"
+    [style.padding-left.px]="margin.left"></svg>    
+</div>
+<app-general-graphic tag="project-types-general" [tabChange]="tabChange"></app-general-graphic>
+</div>
+<div style="width: 50%; display: block;">
+    <div style="margin-top: 50px; margin-left: 50px; margin-right: 50px; margin-bottom: 25px;">
+        <app-selected-sprints-card mode="projectType"></app-selected-sprints-card>
+    </div>
+    <div style="margin-top: 25px; margin-bottom: 25px; margin-left: 50px; margin-right: 50px;">
+        <app-absolute-relative-mode-card (modeChange)="setMode($event)"></app-absolute-relative-mode-card>
+    </div>
+    <div style="margin-top: 25px; margin-bottom: 25px; margin-left: 50px; margin-right: 50px;">
+        <app-filter-project-type-card></app-filter-project-type-card>
+    </div>
+</div>
+</div>
