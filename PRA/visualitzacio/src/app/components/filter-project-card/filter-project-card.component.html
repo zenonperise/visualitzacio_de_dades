@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>Filter By Project</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <mat-tab-group>
+        <mat-tab label="Top 5">
+             <mat-list>
+                <mat-list-item *ngFor="let project of topProjects|async"><mat-checkbox [checked]="getValue(project)|async" (change)="toggle(project)">{{project}} </mat-checkbox><div [style.background-color]="getColor(project)|async" style="margin-left: 10px; width: 20px; height: 20px;"></div></mat-list-item>
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="All">
+             <mat-list>
+                <mat-list-item *ngFor="let project of allProjects|async"><mat-checkbox [checked]="getValue(project)|async" (change)="toggle(project)">{{project}} </mat-checkbox><div [style.background-color]="getColor(project)|async" style="margin-left: 10px; width: 20px; height: 20px;"></div></mat-list-item>
+            </mat-list>
+        </mat-tab>
+    </mat-tab-group>
+    </mat-card-content>
+</mat-card>

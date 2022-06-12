@@ -1,0 +1,109 @@
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>Details</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <div>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Selected Sprints: </td>
+          <td>
+              {{selectedSprints | async}}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <mat-tab-group *ngIf="mode === 'project'" preserveContent>
+        <mat-tab *ngIf="count !=='all'" label="Duration - Top {{count}}">
+          <table>
+            <tr style="text-align: center;">
+              <td></td>
+              <td>Sum</td>
+              <td style="padding-left: 20px;">Avg</td>
+              <td style="padding-left: 20px;">Std</td>
+              <td style="padding-left: 20px;">Min</td>
+              <td style="padding-left: 20px;">Max</td>
+            </tr>
+            <tr style="text-align: right;" *ngIf="totalProject|async as t">
+              <td style="width: 10px;"></td>
+              <td [style.color]="t.color">{{t.sum | duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.avg|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.std|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.min|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.max|duration}}</td>
+            </tr>
+            <tr style="text-align: right;" *ngFor="let summary of summaryByProjects|async">
+              <td style="width: 10px;"></td>
+              <td [style.color]="summary.color">{{summary.sum | duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.avg|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.std|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.min|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.max|duration}}</td>
+            </tr>
+          </table>
+        </mat-tab>
+        <mat-tab label="Duration - All">
+          <table>
+            <tr style="text-align: center;">
+              <td></td>
+              <td>Sum</td>
+              <td style="padding-left: 20px;">Avg</td>
+              <td style="padding-left: 20px;">Std</td>
+              <td style="padding-left: 20px;">Min</td>
+              <td style="padding-left: 20px;">Max</td>
+            </tr>
+            <tr style="text-align: right;" *ngIf="totalProject|async as t">
+              <td style="width: 10px;"></td>
+              <td [style.color]="t.color">{{t.sum | duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.avg|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.std|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.min|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="t.color">{{t.max|duration}}</td>
+            </tr>
+            <tr style="text-align: right;" *ngFor="let summary of summaryByProjectsAll|async">
+              <td style="width: 10px;"></td>
+              <td [style.color]="summary.color">{{summary.sum | duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.avg|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.std|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.min|duration}}</td>
+              <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.max|duration}}</td>
+            </tr>
+          </table>
+        </mat-tab> 
+      </mat-tab-group>
+      <table *ngIf="mode === 'projectType'">
+        <tr>
+          <td *ngIf="count ==='all'" colspan="3" style="font-weight: bold;">Duration</td>
+          <td *ngIf="count !=='all'" colspan="3" style="font-weight: bold;">Duration - Top {{count}}</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td></td>
+          <td>Sum</td>
+          <td style="padding-left: 20px;">Avg</td>
+          <td style="padding-left: 20px;">Std</td>
+          <td style="padding-left: 20px;">Min</td>
+          <td style="padding-left: 20px;">Max</td>
+        </tr>
+        <tr style="text-align: right;" *ngIf="totalProjectType|async as t">
+          <td style="width: 10px;">
+          </td>
+          <td [style.color]="t.color">{{t.sum | duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="t.color">{{t.avg|duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="t.color">{{t.std|duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="t.color">{{t.min|duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="t.color">{{t.max|duration}}</td>
+        </tr>
+        <tr style="text-align: right;" *ngFor="let summary of summaryByProjectTypes|async">
+          <td style="width: 10px;">
+          </td>
+          <td [style.color]="summary.color">{{summary.sum | duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.avg|duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.std|duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.min|duration}}</td>
+          <td style="padding-left: 20px;" [style.color]="summary.color">{{summary.max|duration}}</td>
+        </tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
